@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
-const mongoose= require('mongoose');
 const dotEnv= require("dotenv");
 dotEnv.config();
 const multer  = require('multer');
-const { storage}= require('./cloudinary/index');
+const {storage}= require('./cloudinary/index');
 //const uploads = multer({ dest: "files/"});
 //cloud storage
 const uploads = multer({ storage });
+const mongoose = require("mongoose")
+
+
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true}));
@@ -27,13 +29,7 @@ mongoose.connect(url, connectionParams).then(() => {
     console.log('error')    
     )
 
-    const photonodeSchema = new mongoose.Schema({
-        name: String,
-        image: String,
-        description: String,
-    })
-
-
+   
 app.get("/", (req,res) =>{
     res.render("display");
 });
