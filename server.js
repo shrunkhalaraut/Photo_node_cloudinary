@@ -17,7 +17,8 @@ app.get("/add", (req,res) =>{
 })
 
 app.post("/add",(req,res)=>{
-    console.log("post here")
-})
+   // console.log("post here");
+    console.log(req.body, req.file);
+});
 
 app.listen(5000, ()=> console.log("Server Started"));
