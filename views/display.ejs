@@ -8,5 +8,13 @@
 </head>
 <body>
     <h1>Your images will Apear here</h1>
+    <a href="/add" <button> Add images</button></a>
+    <% for(let i of allImages){ %>
+        <div>
+            <img src="<%= i.image.url %>"alt=" i.name";/>
+            <h4> <%= i.name</h4>
+            <p> <%= i.description %> </p>
+        </div>
+    <% } %>
 </body>
 </html>
