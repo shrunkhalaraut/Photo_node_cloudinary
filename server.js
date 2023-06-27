@@ -16,12 +16,12 @@ app.use(express.urlencoded({ extended: true}));
 //app.set('views', path.join(__dirname, '/views'))
 app.use(express.json())
 
-const url= "mongodb+srv://shrunkhalaraut:D9QoQLb9zGiVi7sJ@cluster0.dwabuzw.mongodb.net/photonodedb"
+//const url= "mongodb+srv://shrunkhalaraut:D9QoQLb9zGiVi7sJ@cluster0.dwabuzw.mongodb.net/photonodedb"
 
-const connectionParams = {
-   useNewUrlParser: true,    
-useUnifiedTopology: true    
-   }
+//const connectionParams = {
+ //  useNewUrlParser: true,    
+//useUnifiedTopology: true    
+ //  }
 
 mongoose.connect(url, connectionParams).then(() => {    
     console.log('connected to db')    
@@ -30,8 +30,9 @@ mongoose.connect(url, connectionParams).then(() => {
     )
 
    
-app.get("/", (req,res) =>{
-    res.render("display");
+app.get("/", async(req,res) =>{
+    const allImages = await Image.find();
+    res.render("display",{allImages});
 });
 
 app.get("/add", (req,res) =>{
